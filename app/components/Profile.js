@@ -5,6 +5,7 @@ var Repos = require('./Github/Repos');
 var Notes = require('./Notes/Notes');
 var ReactFireMixin = require('reactfire');
 var Firebase = require('firebase');
+var helpers = require('../utils/helpers');
 
 var Profile = React.createClass({
 	mixins: [Router.State, ReactFireMixin],
@@ -12,17 +13,32 @@ var Profile = React.createClass({
 	getInitialState: function() {
 		return {
 			notes: [],
-			bio: {name: 'Jason'},
-			repos: [1,2,3]
+			bio: {},
+			repos: []
 		}
+	},
+	init: function(){
+		var childRef = this.ref.child(this.getParams().username);
+		this.bindAsArray(childRef, 'notes');
+
+		helpers.getGithubInfo(this.getParams().username)
+			.then(function(dataObj){
+				this.setState({
+					bio: dataObj.bio,
+					repos: dataObj.repos
+				})
+			}.bind(this));
 	},
 	componentDidMount: function() {
 		this.ref = new Firebase('https://note-taker-github.firebaseio.com');
-		var childRef = this.ref.child(this.getParams().username);
-		this.bindAsArray(childRef, 'notes');
+		this.init();
 	},
 	componentWillUnmount: function() {
 		this.unbind('notes');
+	},
+	componentWillReceiveProps: function(){
+		this.unbind('notes');
+		this.init();
 	},
 	handleAddNote: function(newNote) {
 		this.ref.child(this.getParams().username).set(this.state.notes.concat([newNote]));
