@@ -1,11 +1,11 @@
-var React = require('react');
-var Router = require('react-router');
-var UserProfile = require('./Github/UserProfile');
-var Repos = require('./Github/Repos');
-var Notes = require('./Notes/Notes');
-var ReactFireMixin = require('reactfire');
-var Firebase = require('firebase');
-var helpers = require('../utils/helpers');
+import React from 'react';
+import Router from 'react-router';
+import UserProfile from './Github/UserProfile';
+import Repos from './Github/Repos';
+import Notes from './Notes/Notes';
+import ReactFireMixin from 'reactfire';
+import Firebase from 'firebase';
+import helpers from '../utils/helpers';
 
 var Profile = React.createClass({
 	mixins: [Router.State, ReactFireMixin],
@@ -18,7 +18,7 @@ var Profile = React.createClass({
 		}
 	},
 	init: function(){
-		var childRef = this.ref.child(this.getParams().username);
+		let childRef = this.ref.child(this.getParams().username);
 		this.bindAsArray(childRef, 'notes');
 
 		helpers.getGithubInfo(this.getParams().username)
@@ -44,7 +44,7 @@ var Profile = React.createClass({
 		this.ref.child(this.getParams().username).set(this.state.notes.concat([newNote]));
 	},
 	render: function() {
-		var username = this.getParams().username;
+		let username = this.getParams().username;
 		return (
 			<div className="row">
         <div className="col-md-4">
@@ -64,4 +64,4 @@ var Profile = React.createClass({
 	}
 });
 
-module.exports = Profile;
+export default Profile;
