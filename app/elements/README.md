@@ -14,5 +14,4 @@ An element is allowed to import the following stuff:
 
 Don't import:
 * `components/*` -> pass a component via `props` instead.
-* `helpers/*` -> an element should not fetch data. Move the file to components and pass the data via `props`.
-* `actions` -> pass a callback via `props` and call the action in the container instead.
+* `utils/*` -> an element should not fetch data. Move the file to components and pass the data via `props`.
