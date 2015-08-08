@@ -1,6 +1,6 @@
-var React = require('react');
+import React from 'react';
 
-class Repos extends React.Component{
+export default class Repos extends React.Component{
 	render() {
 		var repos = this.props.repos.map((repo, index) => {
 			return (
@@ -25,5 +25,3 @@ Repos.propTypes = {
 	username: React.PropTypes.string.isRequired,
 	repos: React.PropTypes.array.isRequired
 };
-
-export default Repos;

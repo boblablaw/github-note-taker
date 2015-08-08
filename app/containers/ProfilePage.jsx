@@ -1,15 +1,15 @@
-import React from 'react';
-import Router from 'react-router';
-import UserProfile from './Github/UserProfile';
-import Repos from './Github/Repos';
-import Notes from './Notes/Notes';
-import Firebase from 'firebase';
-import helpers from '../utils/helpers';
-import Rebase from 're-base';
+import React        from 'react';
+import Router       from 'react-router';
+import UserProfile  from '../components/Github/UserProfile';
+import Repos        from '../components/Github/Repos';
+import Notes        from '../components/Notes/Notes';
+import Firebase     from 'firebase';
+import Rebase       from 're-base';
+import helpers      from '../utils/helpers';
 
 var base = Rebase.createClass('https://note-taker-github.firebaseio.com');
 
-class Profile extends React.Component {
+export default class Profile extends React.Component {
 	constructor(props) {
 		super(props);
     this.state = {
@@ -18,7 +18,6 @@ class Profile extends React.Component {
       repos: []
     };
 	}
-
 	init(){
     this.ref = base.syncState(this.router.getCurrentParams().username, {
       context: this,
@@ -34,7 +33,6 @@ class Profile extends React.Component {
         });
       });
   }
-
   componentWillMount(){
     this.router = this.context.router;
   }
@@ -77,5 +75,3 @@ class Profile extends React.Component {
 Profile.contextTypes = {
   router: React.PropTypes.func.isRequired
 };
-
-export default Profile;

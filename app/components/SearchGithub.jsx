@@ -1,7 +1,7 @@
-import React from 'react';
+import React 	from 'react';
 import Router from 'react-router';
 
-class SearchGithub extends React.Component {
+export default class SearchGithub extends React.Component {
 	handleSubmit() {
 		let router = this.context.router;
 		let username = this.refs.username.getDOMNode().value;
@@ -28,5 +28,3 @@ class SearchGithub extends React.Component {
 SearchGithub.contextTypes = {
 	router: React.PropTypes.func.isRequired
 };
-
-export default SearchGithub;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-class AddNote extends React.Component{
+export default class AddNote extends React.Component{
 	handleSubmit(){
 		var newNote = this.refs.note.getDOMNode().value;
 		this.refs.note.getDOMNode().value = '';
@@ -23,5 +23,3 @@ AddNote.propTypes = {
 	username: React.PropTypes.string.isRequired,
 	addNote: React.PropTypes.func.isRequired
 }
-
-export default AddNote;

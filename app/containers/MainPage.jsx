@@ -1,8 +1,8 @@
-import React from 'react';
+import React            from 'react';
 import { RouteHandler } from 'react-router';
-import SearchGithub from './SearchGithub';
+import SearchGithub     from '../components/SearchGithub';
 
-class Main extends React.Component {
+export default class Main extends React.Component {
   render(){
     return (
       <div className="main-container">
@@ -18,5 +18,3 @@ class Main extends React.Component {
     )
   }
 };
-
-export default Main;

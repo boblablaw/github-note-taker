@@ -1,8 +1,8 @@
-import React from 'react';
-import NotesList from './NotesList';
-import AddNote from './AddNote';
+import React 			from 'react';
+import NotesList 	from './NotesList';
+import AddNote 		from './AddNote';
 
-class Notes extends React.Component {
+export default class Notes extends React.Component {
 	render() {
 		return (
 			<div>
@@ -19,5 +19,3 @@ Notes.propTypes = {
 	notes: React.PropTypes.array.isRequired,
 	addNote: React.PropTypes.func.isRequired
 }
-
-export default Notes;

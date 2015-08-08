@@ -1,12 +1,3 @@
-module.exports = {
-	entry: "./app/App.js",
-	output: {
-		filename: "public/bundle.js"
-	},
-	module: {
-		loaders: [
-			{ test: /\.jsx?$/, exclude: /(node_modules|bower_components)/, loader: 'babel' },
-			{ test: require.resolve('react'), loader: 'expose?React' }
-		]
-	}
-};
+module.exports = require("./make-webpack-config")({
+
+});
